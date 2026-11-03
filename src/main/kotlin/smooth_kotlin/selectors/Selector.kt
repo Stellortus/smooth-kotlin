@@ -9,11 +9,15 @@ abstract class Selector<T>(val values: List<T>) {
         require(values.isNotEmpty()) { "Candidates must not be empty" }
     }
 
-    protected var index by CyclicIndex(values.size - 1)
+    var index by CyclicIndex(values.size - 1)
 
-    open fun stepForward() { index++ }
+    open fun stepForward() {
+        index++
+    }
 
-    open fun stepBackward() { index--}
+    open fun stepBackward() {
+        index--
+    }
 
     abstract operator fun getValue(thisRef: Any?, property: KProperty<*>): T
 }
